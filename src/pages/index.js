@@ -20,7 +20,7 @@ const ContentsWrapper = styled.div`
 `
 const Intro = styled.div`
   display: flex;
-  height: 300px;
+  height: 500px;
   justify-content: center;
   align-items: center;
   
@@ -39,15 +39,19 @@ const ProjectWrapper = styled.div`
   display: flex;
 `
 const ProjectBox = styled.div`
+  margin: 0px 15px 0px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  flex: 1;
   height: 150px;
   border: 1px solid #dbdbdb;
+  box-sizing: border-box;
   border-radius: 10px;
 `
-
+const ProjectMessge = styled.h6`
+  margin: 20px 0px;
+`
 
 const IndexPage = () => {
   return (
@@ -58,9 +62,17 @@ const IndexPage = () => {
           <TitleMessage>Code Simply, Work Flexibility</TitleMessage>
         </Intro>
         <Works>
-          <h6>진행 프로젝트</h6>
+          <ProjectMessge>진행 프로젝트</ProjectMessge>
           <ProjectWrapper>
-            {projects.map((v, i) => (
+            {projects.work.map((v, i) => (
+              <ProjectBox key={i}>
+                {v.title}
+              </ProjectBox>
+            ))}
+          </ProjectWrapper>
+          <ProjectMessge>토이 프로젝트</ProjectMessge>
+          <ProjectWrapper>
+            {projects.toy.map((v, i) => (
               <ProjectBox key={i}>
                 {v.title}
               </ProjectBox>
