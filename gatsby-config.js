@@ -7,13 +7,14 @@ module.exports = {
     "gatsby-plugin-styled-components",
     "gatsby-plugin-sitemap",
     "gatsby-transformer-remark",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        name: "projects",
+        path: "./src/projects/",
       },
-      __key: "pages",
+      __key: "projects",
     },
   ],
 };
