@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+// import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import '../global.css'
+import { projects } from '../projects'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -13,7 +14,6 @@ const ContentsWrapper = styled.div`
   display: flex;
   width: 65vw;
   flex-direction: column;
-  background: #dbdbdb;
   @media only screen and (max-width: 1024px) {
     width: 100vw;
   }
@@ -27,6 +27,7 @@ const Intro = styled.div`
 `
 const Works = styled.div`
   display: flex;
+  flex-direction: column;
   height: 400px;
   padding: 10px;
 
@@ -34,28 +35,21 @@ const Works = styled.div`
 const TitleMessage = styled.h1`
   color: #fbfbfb;
 `
-// data
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  }
-]
+const ProjectWrapper = styled.div`
+  display: flex;
+`
+const ProjectBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #dbdbdb;
+  border-radius: 10px;
+`
 
-// markup
+
 const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
   return (
     <MainWrapper>
       <title>Home Page</title>
@@ -64,8 +58,14 @@ const IndexPage = () => {
           <TitleMessage>Code Simply, Work Flexibility</TitleMessage>
         </Intro>
         <Works>
-          <p>진행 프로젝트</p>
-          {data.site.siteMetadata.title}
+          <h6>진행 프로젝트</h6>
+          <ProjectWrapper>
+            {projects.map((v, i) => (
+              <ProjectBox key={i}>
+                {v.title}
+              </ProjectBox>
+            ))}
+          </ProjectWrapper>
         </Works>
       </ContentsWrapper>
     </MainWrapper>
