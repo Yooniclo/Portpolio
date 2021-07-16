@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link, navigate } from 'gatsby'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 import '../global.css'
 import { projects } from '../projects'
@@ -59,38 +59,23 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
 `
-const IndexPage = () => {
-  return (
+const IndexPage = ({ location }) => {
+    return (
     <MainWrapper>
-      <title>Home Page</title>
+      <title>YJH PP</title>
       <ContentsWrapper>
         <Header>
-          {/* <a href="#" onClick={ () => navigate('/tjmbc', { state: { foo: 'bar' } } ) }>Forgot Password?</a> */}
-          <Link to="/">YOON JEONGHYON PORTPOLIO</Link>
+          <Link to="/">YOON JEONGHYUN PORTPOLIO</Link>
         </Header>
         <Intro>
-          <TitleMessage>Code Simply, Work Flexibility</TitleMessage>
+          <TitleMessage>대전MBC 통계 페이지 개발</TitleMessage>
         </Intro>
         <Works>
-          <ProjectMessge>진행 프로젝트</ProjectMessge>
           <ProjectWrapper>
-            {projects.work.map((v, i) => (
-              <Link to={v.keyword} state={{ data: v }} key={i}>
-                <ProjectBox>
-                  {v.title}
-                </ProjectBox>
-              </Link>
-            ))}
+            {location.state.data.image}
           </ProjectWrapper>
-          <ProjectMessge>토이 프로젝트</ProjectMessge>
           <ProjectWrapper>
-            {projects.toy.map((v, i) => (
-              <Link to={v.keyword} key={i}>
-                <ProjectBox>
-                  {v.title}
-                </ProjectBox>
-              </Link>
-            ))}
+
           </ProjectWrapper>
         </Works>
       </ContentsWrapper>
